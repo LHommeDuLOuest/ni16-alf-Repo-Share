@@ -27,4 +27,5 @@
 *.ear
 *.class
 
-
+#alf_data_dev
+*alf_data_dev

@@ -1,0 +1,8 @@
+<project default="copy-resources">
+  <target name="init"/>
+  <target name="copy-resources" depends="init">
+    <copy todir="target/classes/opt/Codes/CodeJavaEclipse/ni16-alf-Repo-Share/alfApp/alfApp-Repo/target/amp" filtering="true">
+      <fileset dir="src/main/amp" includes="" excludes="**/*.java"/>
+    </copy>
+  </target>
+</project>
