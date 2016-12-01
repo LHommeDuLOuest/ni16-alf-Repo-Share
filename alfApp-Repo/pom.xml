@@ -1,19 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+         
+    <parent>
+		<artifactId>alfApp</artifactId>
+		<groupId>fr.ni.val.soft</groupId>
+		<version>1.0-SNAPSHOT</version>
+		<relativePath>../</relativePath>
+	</parent>
+	
     <modelVersion>4.0.0</modelVersion>
-    <groupId>fr.ni.val.soft</groupId>
     <artifactId>alfApp-Repo</artifactId>
-    <version>1.0-SNAPSHOT</version>
     <name>alfApp-Repo Repository AMP project</name>
     <packaging>amp</packaging>
     <description>Manages the lifecycle of the alfApp-Repo Repository AMP (Alfresco Module Package)</description>
-
+    
+    
+    <!-- 
     <parent>
         <groupId>org.alfresco.maven</groupId>
         <artifactId>alfresco-sdk-parent</artifactId>
         <version>2.2.0</version>
     </parent>
+    -->
 
     <!-- 
         SDK properties have sensible defaults in the SDK parent,

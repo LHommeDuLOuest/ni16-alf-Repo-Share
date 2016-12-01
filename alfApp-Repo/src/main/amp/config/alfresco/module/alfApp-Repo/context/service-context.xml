@@ -34,5 +34,14 @@
         <property name="nodeService" ref="NodeService" />
         <property name="nodeLocatorService" ref="nodeLocatorService" />
     </bean>
+    
+    <!-- Registration of new models -->
+    <bean id="${project.artifactId}_dictionaryBootstrap" parent="dictionaryModelBootstrap" depends-on="dictionaryBootstrap">
+        <property name="models">
+            <list>
+                 <value>alfresco/module/${project.artifactId}/model/niModel.xml</value>
+            </list>
+        </property>
+    </bean>
 
 </beans>

@@ -1,0 +1,34 @@
+
+<alfresco-config>
+    <!-- Document Library config section -->
+    <config evaluator="string-compare" condition="DocumentLibrary">
+        <aspects>
+            
+            <!-- Aspects that a user can see -->
+            <visible>
+                <aspect name="ni:webable" />
+                <aspect name="ni:productRelated" />            
+            </visible>
+
+            <!-- Aspects that a user can add. Same as "visible" if left empty -->
+            <addable>
+            </addable>
+
+            <!-- Aspects that a user can remove. Same as "visible" if left empty -->
+            <removeable>
+            </removeable>
+            
+       </aspects>
+       
+       <types>
+           <type name="cm:content">
+               <subtype name="ni:doc" />
+               <subtype name="ni:nipaper" />
+          </type>
+          <type name="ni:doc">
+              <subtype name="ni:nipaper" />
+          </type>
+       </types>
+        
+    </config>
+</alfresco-config>

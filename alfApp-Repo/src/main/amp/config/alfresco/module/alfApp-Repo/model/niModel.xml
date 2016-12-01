@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Definition of new Model -->
+<model name="ni:nimodel" xmlns="http://www.alfresco.org/model/dictionary/1.0">
+    <!-- Optional meta-data about the model -->
+    <description>NI Model</description>
+    <author>Lyes Kherbiche</author>
+    <version>1.0</version>
+
+    <!-- Imports are required to allow references to definitions in other models -->
+    <imports>
+        <!-- Import Alfresco Dictionary Definitions -->
+        <import uri="http://www.alfresco.org/model/dictionary/1.0" prefix="d" />
+        <!-- Import Alfresco Content Domain Model Definitions -->
+        <import uri="http://www.alfresco.org/model/content/1.0" prefix="cm" />
+    </imports>
+
+    <!-- Introduction of new namespaces defined by this model -->
+    <namespaces>
+        <namespace uri="http://www.ni.com/model/content/1.0" prefix="ni" />
+    </namespaces>
+    <constraints>
+        <constraint name="ni:campaignList" type="LIST">
+            <parameter name="allowedValues">
+                <list>
+                    <value>Application Syndication</value>
+                    <value>Private Event Retailing</value>
+                    <value>Social Sharing</value>
+                </list>
+            </parameter>
+        </constraint>
+        <constraint name="ni:specialityList" type="LIST">
+            <parameter name="allowedValues">
+                <list>
+                    <value>Computer Science</value>
+                    <value>Physical Science</value>
+                    <value>Math Science</value>
+                    <value>Medecine</value>
+                </list>
+            </parameter>
+        </constraint>
+    </constraints>
+
+    <types>
+        <!-- Enterprise-wide generic document type -->
+        <type name="ni:doc">
+            <title>ni Document</title>
+            <parent>cm:content</parent>
+            <properties>
+                <property name="ni:speciality">
+                    <type>d:text</type>
+                    <multiple>true</multiple>
+                    <constraints>
+                        <constraint ref="ni:specialityList"/>
+                    </constraints>
+                </property>
+            </properties>
+            <associations>
+                <association name="ni:relatedDocuments">
+                    <title>Related Documents</title>
+                    <source>
+                        <mandatory>false</mandatory>
+                        <many>true</many>
+                    </source>
+                    <target>
+                        <class>ni:doc</class>
+                        <mandatory>false</mandatory>
+                        <many>true</many>
+                    </target>
+                </association>
+            </associations>
+            <mandatory-aspects>
+                <aspect>cm:generalclassifiable</aspect>
+            </mandatory-aspects>
+        </type>
+
+        <type name="ni:nipaper">
+            <title>ni paper</title>
+            <parent>ni:doc</parent>
+        </type>
+
+        <type name="ni:marketingDoc">
+            <title>ni Marketing Document</title>
+            <parent>ni:doc</parent>
+            <properties>
+                <property name="ni:campaign">
+                    <type>d:text</type>
+                    <multiple>true</multiple>
+                    <constraints>
+                        <constraint ref="ni:campaignList" />
+                    </constraints>
+                </property>
+            </properties>
+        </type>
+
+    </types>
+
+    <aspects>
+        <aspect name="ni:webable">
+            <title>ni Webable</title>
+            <properties>
+                <property name="ni:published">
+                    <type>d:date</type>
+                </property>
+                <property name="ni:isActive">
+                    <type>d:boolean</type>
+                    <default>false</default>
+                </property>
+            </properties>
+        </aspect>
+
+        <aspect name="ni:productRelated">
+            <title>ni Product Metadata</title>
+            <properties>
+                <property name="ni:product">
+                    <type>d:text</type>
+                    <mandatory>true</mandatory>
+                    <multiple>true</multiple>
+                </property>             
+                <property name="ni:version">
+                    <type>d:text</type>
+                    <mandatory>true</mandatory>
+                    <multiple>true</multiple>
+                </property>
+            </properties>
+        </aspect>
+    </aspects>
+</model>
